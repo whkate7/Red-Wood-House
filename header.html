@@ -1,19 +1,30 @@
+<!-- header.html -->
 <style>
   body {
     margin: 0;
     padding: 0;
-    background: url('WoodBackground.png') no-repeat center center fixed;
+  }
+
+  /* Header container with wooden background */
+  .header {
+    background: url('WoodBackground.png') no-repeat center center;
     background-size: cover;
-    font-family: sans-serif;
+    padding: 10px 0;
     text-align: center;
-    color: white;
+    position: relative;
+  }
+
+  /* Logo */
+  .logo img {
+    width: 250px;
+    height: auto;
   }
 
   /* Hamburger Icon */
   .menu-icon {
     font-size: 30px;
     cursor: pointer;
-    position: fixed;
+    position: absolute;
     top: 20px;
     left: 20px;
     z-index: 1001;
@@ -57,34 +68,29 @@
     text-decoration: none;
     cursor: pointer;
   }
-
-  /* Logo */
-  .logo {
-    margin-top: 20px;
-  }
-  .logo img {
-    width: 250px;
-    height: auto;
-  }
 </style>
 
-<!-- Hamburger Icon -->
-<div class="menu-icon" onclick="toggleMenu()">☰</div>
+<div class="header">
+  <!-- Hamburger Icon -->
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="redWoodLogoW.png" alt="Red Wood House Logo">
+  </div>
+</div>
 
 <!-- Side Menu -->
 <div id="sideMenu" class="side-menu">
-    <a href="menu/soup.html">湯品 / Soup</a>
-    <a href="menu/chicken.html">雞肉料理 / Chicken</a>
-    <a href="menu/beef.html">牛肉料理 / Beef</a>
-    <a href="menu/pork.html">豬肉料理 / Pork</a>
-    <a href="menu/seafood.html">海鮮料理 / Seafood</a>
-    <a href="menu/veggie.html">蔬菜 / Veggie</a>
-    <a href="menu/tofuAndEgg.html">豆腐 蛋料理 / Tofu & Egg</a>
-    <a href="menu/main.html">主食 / Main</a>
-    <a href="menu/dessert.html">點心 / Dessert</a>
-    <a href="menu/tea.html">茶飲 / Tea</a>
+  <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+  <a href="/menu/soup.html">湯品 / Soup</a>
+  <a href="/menu/chicken.html">雞肉料理 / Chicken</a>
+  <a href="/menu/beef.html">牛肉料理 / Beef</a>
+  <a href="/menu/pork.html">豬肉料理 / Pork</a>
+  <a href="/menu/seafood.html">海鮮料理 / Seafood</a>
+  <a href="/menu/veggie.html">蔬菜 / Veggie</a>
+  <a href="/menu/tofuAndEgg.html">豆腐 蛋料理 / Tofu & Egg</a>
+  <a href="/menu/main.html">主食 / Main</a>
+  <a href="/menu/dessert.html">點心 / Dessert</a>
+  <a href="/menu/tea.html">茶飲 / Tea</a>
 </div>
-
-<!-- Logo -->
-<div class="logo">
-  <img src="redWoodLogoW.PNG" alt="Red Wood Ho
