@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red Wood House</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('WoodBackground.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      color: white;
+    }
+
+    /* --- Hamburger Icon --- */
+    .menu-icon {
+      font-size: 30 px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      color: whitesmoke;
+      user-select: none;
+    }
+
+    /* --- Side Menu Panel --- */
+    .side-menu {
+      height: 100%;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow-x: hidden;
+      transition: 0.4s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+
+    .side-menu a {
+      display: block;
+      padding: 14px 24px;
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .side-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* --- Logo --- */
+    .logo {
+      margin-top: 20px;
+    }
+
+    .logo img {
+      width: 250px;
+      height: auto;
+    }
+
+    /* --- Slideshow --- */
+    .slideshow-container {
+      max-width: 800px;
+      position: relative;
+      margin: 40px auto;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .mySlides img {
+      width: 90%;
+      border-radius: 20px;
+    }
+
+    /* --- Shared Caption Textbox --- */
+    .shared-caption {
+      text-align: left;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 16px;
+      margin: 20px auto;
+      padding: 15px 20px;
+      width: 80%;
+      border-radius: 8px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ☰ Hamburger Icon -->
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+  <!-- 📂 Side Menu -->
+  <div id="sideMenu" class="side-menu">
+    
+    <a href="menu/soup.html">湯品 / Soup</a>
+    <a href="menu/chicken.html">雞肉料理 / Chicken</a>
+    <a href="menu/beef.html">牛肉料理 / Beef</a>
+    <a href="menu/pork.html">豬肉料理 / Pork</a>
+    <a href="menu/seafood.html">海鮮料理 / Seafood</a>
+    <a href="menu/veggie.html">蔬菜 / Veggie</a>
+    <a href="menu/tofuAndEgg.html">豆腐 蛋料理 / Tofu & Egg</a>
+    <a href="menu/main.html">主食 / Main</a>
+    <a href="menu/dessert.html">點心 / Dessert</a>
+    <a href="menu/tea.html">茶飲 / Tea</a>
+  </div>
+
+  <!-- 🪵 Logo -->
+  <div class="logo">
+    <img src="redWoodLogoW.PNG" alt="Red Wood House Logo" />
+  </div>
+
+  <!-- 🖼️ Slideshow -->
+  <div class="slideshow-container">
+    <div class="mySlides"><img src="store1.jpg" alt="Slide 1"></div>
+    <div class="mySlides"><img src="store2.jpg" alt="Slide 2"></div>
+    <div class="mySlides"><img src="store3.jpg" alt="Slide 3"></div>
+  </div>
+
+  <!-- 📜 Shared Caption Text -->
+  <div class="shared-caption"> 
+    <p>
+      於民國77年成立至今已三十多個年頭，<br>
+      在木柵貓空落地生根，從最早期單純的茶農到茶藝館延續到現在，<br>
+      除了泡茶外還提供色香味俱全的中式餐點及西式咖啡飲品，並以茶為出發點去研發、創造出更多特色的各式飲品。
+      <br><br>
+      一樓是室內咖啡廳，B1、B2茶館屬半戶外區域，<br>
+      營造一個悠閒且舒適的空間讓各位可遠離喧囂並靜下心來沏壺好茶。
+      <br><br>
+      主打：獨特炭培鐵觀音，多樣茶餐熱炒、<br>
+      鬆餅輕食下午茶、咖啡各式冷熱飲，讓你相見恨晚的茶餐廳！
+      <br><br>
+      色香味配美景一應俱全！
+    </p>
+  </div>
+
+  <!-- 🎯 JavaScript -->
+  <script>
+    // Slideshow Functionality
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("mySlides");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000);
+    }
+
+    // Toggle Side Menu
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      if (menu.style.left === "0px") {
+        menu.style.left = "-250px";
+      } else {
+        menu.style.left = "0px";
+      }
+
+    function toggleMenu() {
+        document.getElementById("sideMenu").style.left = "0";
+    }
+    function closeMenu() {
+      document.getElementById("sideMenu").style.left = "-250px";
+    }
+    }
+  </script>
+
+</body>
+</html>
+
