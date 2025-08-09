@@ -12,67 +12,6 @@
       color: white;
       margin: 0;
     }
-
-    /* Hamburger Icon */
-    .menu-icon {
-      font-size: 30px;
-      cursor: pointer;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1001;
-      color: white;
-      user-select: none;
-    }
-
-    /* Side Menu */
-    .side-menu {
-      height: 100%;
-      width: 250px;
-      position: fixed;
-      top: 0;
-      left: -250px;
-      background-color: rgba(0, 0, 0, 0.9);
-      overflow-x: hidden;
-      transition: 0.4s;
-      padding-top: 60px;
-      z-index: 1000;
-    }
-
-    .side-menu a {
-      padding: 10px 15px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .side-menu a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 30px;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* Logo */
-    .logo {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .logo img {
-      width: 250px;
-      height: auto;
-    }
-
-    /* Slideshow */
     .slideshow-container {
       max-width: 800px;
       position: relative;
@@ -85,8 +24,6 @@
       width: 90%;
       border-radius: 20px;
     }
-
-    /* Intro */
     .intro-text {
       text-align: left;
       background-color: rgba(0, 0, 0, 0.6);
@@ -101,37 +38,17 @@
 </head>
 <body>
 
-  <!-- Hamburger Icon -->
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <!-- header load -->
+  <div id="header-placeholder"></div>
 
-  <!-- Side Menu -->
-  <div id="sideMenu" class="side-menu">
-    <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">×</a>
-    <a href="/menu/soup.html">湯品 / Soup</a>
-    <a href="/menu/chicken.html">雞肉料理 / Chicken</a>
-    <a href="/menu/beef.html">牛肉料理 / Beef</a>
-    <a href="/menu/pork.html">豬肉料理 / Pork</a>
-    <a href="/menu/seafood.html">海鮮料理 / Seafood</a>
-    <a href="/menu/veggie.html">蔬菜 / Veggie</a>
-    <a href="/menu/tofuAndEgg.html">豆腐 蛋料理 / Tofu & Egg</a>
-    <a href="/menu/main.html">主食 / Main</a>
-    <a href="/menu/dessert.html">點心 / Dessert</a>
-    <a href="/menu/tea.html">茶飲 / Tea</a>
-  </div>
-
-  <!-- Logo -->
-  <div class="logo">
-    <img src="redWoodLogoW.png" alt="Red Wood House Logo">
-  </div>
-
-  <!-- Slideshow -->
+  <!-- slideshow -->
   <div class="slideshow-container">
     <div class="mySlides"><img src="store1.jpg" alt="Slide 1"></div>
     <div class="mySlides"><img src="store2.jpg" alt="Slide 2"></div>
     <div class="mySlides"><img src="store3.jpg" alt="Slide 3"></div>
   </div>
 
-  <!-- Intro -->
+  <!-- intro -->
   <div class="intro-text">
     於民國77年成立至今已三十多個年頭，<br>
     在木柵貓空落地生根，從最早期單純的茶農到茶藝館延續到現在，<br>
@@ -147,17 +64,19 @@
   </div>
 
   <script>
-    // Sidebar toggle
-    function toggleMenu() {
-      const sideMenu = document.getElementById("sideMenu");
-      if (sideMenu.style.left === "0px") {
-        sideMenu.style.left = "-250px";
-      } else {
-        sideMenu.style.left = "0px";
-      }
-    }
+    // Load header first
+    fetch("header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
 
-    // Slideshow
+        // Load menu script after header is inserted
+        const script = document.createElement("script");
+        script.src = "menu.js"; // must be in same folder as index.html
+        document.body.appendChild(script);
+      });
+
+    // slideshow
     let slideIndex = 0;
     function showSlides() {
       let slides = document.getElementsByClassName("mySlides");
